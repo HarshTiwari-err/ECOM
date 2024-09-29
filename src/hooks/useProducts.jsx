@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { fetchProducts } from '../store/productSlice';
@@ -22,6 +22,7 @@ const useFilteredProducts = () => {
             limit,
             search,
         }));
+        window.scrollTo(0, 0);
     }, [dispatch, category, page, search]);
 
     const setPage = (newPage) => {
@@ -32,6 +33,7 @@ const useFilteredProducts = () => {
         searchParams.delete('page')
       }
       navigate(`${location.pathname}?${searchParams.toString()}`);
+      window.scrollTo(0, 0);
     };
     return { 
         products,
@@ -44,3 +46,4 @@ const useFilteredProducts = () => {
 }
 
 export default useFilteredProducts;
+

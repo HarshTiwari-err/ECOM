@@ -11,9 +11,11 @@ const Search = () => {
     setSearchQuery(searchQuery);
   }, [searchQuery])
   const handleSubmit = (e) => {
+    console.log("hell")
     e.preventDefault();
     const queryParams = new URLSearchParams(location.search);
-    
+    console.log("er,",queryParams.get('page'))
+    queryParams.delete('page')
     if (searchQueryState) {
       queryParams.set('search', searchQueryState);
     } else {
